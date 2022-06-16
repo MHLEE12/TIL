@@ -2,7 +2,6 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +9,12 @@ import java.util.Optional;
 public class MemberService {
     // service class는 비즈니스와 가까운 용어를 사용해서 네이밍 함. 그래야 매칭 가능..
     // repository는 기계적으로 개발스러운 용어 사용한다..
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+        // 외부에서 넣어줄 수 있도록 함.
+    }
 
     /**
      * 회원가입
