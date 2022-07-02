@@ -12,5 +12,4 @@ public interface MemberRepository {
     Optional<Member> findById(Long id); // java8의 기능 Optional
     Optional<Member> findByName(String name);
     List<Member> findAll();
-
 }
