@@ -16,6 +16,8 @@ class MemberServiceTest {
     MemberService memberService;
     MemoryMemberRepository memberRepository;
 
+    // 순수한 단위테스트가 훨씬 좋은 테스트일 확율이 높다. 스프링컨테이너 없이 테스트할 수 있도록 훈련하는 것이 좋다.
+
     @BeforeEach
     public void beforeEach() {
         // test실행시 각각 생성됨.(test는 독립적으로 실행해줘야 하니까!)
