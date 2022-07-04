@@ -26,14 +26,17 @@ public class MemberService {
     public Long join(Member member) {
         // 같은 이름이 있는 중복 회원X
 
+        validateDuplicateMember(member); // 중복 회원 검증
+        memberRepository.save(member); // 통과하면 저장
+        return member.getId();
+
+
         // ifPresent는 result에 값이 있으면 동작함(optional로 감쌌기 때문에 가능)
 //        Optional<Member> result = memberRepository.findByName(member.getName());
 //        result.ifPresent(member1 -> {
 //            throw new IllegalStateException("이미 존재하는 회원입니다.");
 //        });
-        validateDuplicateMember(member); // 중복 회원 검증
-        memberRepository.save(member); // 통과하면 저장
-        return member.getId();
+
     }
 
     private void validateDuplicateMember(Member member) {
