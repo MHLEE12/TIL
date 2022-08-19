@@ -18,4 +18,6 @@ public class Board {
     private Integer id; // Integer는 null값을 넣을 수 있어서 Integer를 사용했다고 함
     private String title;
     private String content;
+    private String filename;
+    private String filepath;
 }
