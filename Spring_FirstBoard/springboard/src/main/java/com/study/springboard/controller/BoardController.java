@@ -3,6 +3,9 @@ package com.study.springboard.controller;
 import com.study.springboard.entity.Board;
 import com.study.springboard.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +37,10 @@ public class BoardController {
     }
 
     @GetMapping("/board/list")
-    public String boardList(Model model) {
-        model.addAttribute("list", boardService.boardList());
+    public String boardList(Model model, @PageableDefault(page=0, size=10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        // @PageDefault에서 page: default페이지/ siez : 한 페이지 게시글 수 / sort : 정렬 기준 컬럼, direction : 정렬 순서
+
+        model.addAttribute("list", boardService.boardList(pageable));
         return "boardList";
     }
 
