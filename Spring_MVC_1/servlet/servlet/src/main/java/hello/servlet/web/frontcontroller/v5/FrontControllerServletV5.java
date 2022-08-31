@@ -54,6 +54,7 @@ public class FrontControllerServletV5 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // 핸들러 찾아옴
         Object handler = getHandler(request);
 
         if(handler == null) {
@@ -61,6 +62,7 @@ public class FrontControllerServletV5 extends HttpServlet {
             return;
         }
 
+        // 핸들러 어댑터 찾아옴
         MyHandlerAdapter adapter = getHandlerAdapter(handler);
 
         ModelView mv = adapter.handle(request, response, handler);

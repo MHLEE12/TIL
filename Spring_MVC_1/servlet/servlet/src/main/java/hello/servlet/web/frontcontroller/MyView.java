@@ -25,7 +25,7 @@ public class MyView  {
         dispatcher.forward(request, response);
     }
 
-    // model에 있는값을 다 꺼내서 setAttribute로 다 넣는다.
+    // model에 있는값을 다 꺼내서 setAttribute로 다 넣는다. -> jsp에서 받을 수 있게!
     private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
         model.forEach((key, value) -> request.setAttribute(key, value));
     }

@@ -31,7 +31,7 @@ public class FrontControllerServletV3 extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("FrontControllerServletV2.service");
+        System.out.println("FrontControllerServletV3.service");
 
         String requestURI = request.getRequestURI();
 
@@ -46,13 +46,13 @@ public class FrontControllerServletV3 extends HttpServlet {
 //        request.getParameterNames().asIterator()
 //                .forEachRemaining(paramName -> paramMap.put(paramName, request.getParameter(paramName)));
 
-        // 메소드로 뽑아냄(control + alt + M)
+        // 위의 코드를 메소드로 뽑아냄(control + alt + M) -> createParamMap()
         Map<String, String> paramMap = createParamMap(request);
         ModelView mv = controller.process(paramMap);
 
         String viewName = mv.getViewName(); // 논리이름 ex)new-form
 
-        MyView view = viewResolver(viewName);
+        MyView view = viewResolver(viewName); // viewResolver를 메소드로 따로 만듦(view의 물리이름으로 경로 생성)
 
         view.render(mv.getModel(), request, response);
     }

@@ -18,6 +18,7 @@ public class MemberSaveControllerV4 implements ControllerV4 {
         Member member = new Member(username, age);
         memberRepository.save(member);
 
+        // front controller에서 model을 만들어서 보내줬으니 사용하기만 하면 된다.
         model.put("member", member);
         return "save-result";
     }

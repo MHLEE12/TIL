@@ -21,6 +21,8 @@ public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
     @Override
     public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
+        // handler를 Object로 하는 것은 유연하게 사용하기 위함
+        // supports에서 ControllerV3만 걸렀으므로 ControllerV3로 타입캐스팅 해도 된다.
         ControllerV3 controller = (ControllerV3) handler;
 
         Map<String, String> paramMap = createParamMap(request);
