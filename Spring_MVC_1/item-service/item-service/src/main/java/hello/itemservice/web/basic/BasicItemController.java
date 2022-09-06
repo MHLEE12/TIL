@@ -96,11 +96,19 @@ public class BasicItemController {
      * @ModelAttribute 자체 생략 가능
      * model.addAttribute(item) 자동 추가
      */
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV4(Item item) {
-
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    /**
+     * PRG - Post/Redirect/Get
+     */
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId(); // URL 인코딩 위험 있음!
     }
 
     @GetMapping("/{itemId}/edit") // 수정 폼을 보여주는 것이니까 get
