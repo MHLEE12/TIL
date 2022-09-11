@@ -17,6 +17,8 @@ public class ItemRepository {
         if(item.getId() == null) {
             em.persist(item); // 신규 등록
         } else {
+            // 병합 사용 : 병합은 준영속 상태의 엔티티를 영속 상태로 변경할 때 사용하는 기능이다.
+            // merge는 필드에서 쓰지 않는 것으로 알아둘 것.(다 바뀌는 것이라 위험하다!)
             em.merge(item); // update와 비슷
         }
     }
