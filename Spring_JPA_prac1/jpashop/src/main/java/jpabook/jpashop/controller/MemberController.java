@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,8 +39,17 @@ public class MemberController {
         member.setAddress(address);
 
         // form으로 받아서 정제 후에 필요한 데이터만 채워서 엔티티로 넘기는 것이 좋다.(현업스타일..)
+        // ** API를 만들때는 엔티티를 반환하게 하면 안된다.
+
         memberService.join(member);
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
     }
 
 }
