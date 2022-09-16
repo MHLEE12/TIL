@@ -10,4 +10,13 @@ public class ItemServiceApplication {
 		SpringApplication.run(ItemServiceApplication.class, args);
 	}
 
+	// 스프링부트를 쓰면 자동으로 등록된다.
+//	@Bean
+//	public MessageSource messageSource() {
+//		ResourceBundleMessageSource messageSource = new
+//				ResourceBundleMessageSource();
+//		messageSource.setBasenames("messages", "errors");
+//		messageSource.setDefaultEncoding("utf-8");
+//		return messageSource;
+//	}
 }
