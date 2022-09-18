@@ -49,7 +49,7 @@ public class ValidationItemControllerV2 {
     public String addItemV1(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         // item의 binding 결과가 bindingResult에 담김.
         // bindingResult가 errors를 대체함. 그리고 자동으로 view로 넘어감
-        // bindingResult 순서 중요하다. item뒤에 위치해야함
+        // bindingResult 순서 중요하다. 검증할 대상 바로 뒤에 와야함
 
         // 검증 로직
         if(!StringUtils.hasText(item.getItemName())) {
