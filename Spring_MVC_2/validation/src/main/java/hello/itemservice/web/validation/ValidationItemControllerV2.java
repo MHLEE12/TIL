@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -161,6 +162,10 @@ public class ValidationItemControllerV2 {
         log.info("target={}", bindingResult.getTarget());
 
         // 검증 로직
+
+        // 밑의 if문과 같은 내용
+//        ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required");
+
         if(!StringUtils.hasText(item.getItemName())) {
             bindingResult.rejectValue("itemName", "required");
         }
