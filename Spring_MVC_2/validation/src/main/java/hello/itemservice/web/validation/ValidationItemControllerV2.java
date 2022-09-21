@@ -158,6 +158,12 @@ public class ValidationItemControllerV2 {
     @PostMapping("/add")
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
+        // 선택사항 (에러코드가 하나만 나오게 된다.)
+//        if(bindingResult.hasErrors()) {
+//            log.info("errors={}", bindingResult);
+//            return "validation/v2/addForm";
+//        }
+
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("target={}", bindingResult.getTarget());
 
