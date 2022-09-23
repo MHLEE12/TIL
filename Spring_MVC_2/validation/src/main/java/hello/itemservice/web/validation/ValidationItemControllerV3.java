@@ -43,7 +43,15 @@ public class ValidationItemControllerV3 {
 
     @PostMapping("/add")
     public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
-        // @Validated : 검증기를 실행하라는 어노테이션. 자동으로 Item에 대한 검증기가 수행된다.
+
+        // 글로벌 오류의 경우 자바 코드로 작성하는 것을 권장함
+        // 특정 필드가 아닌 복합 룰 검증
+        if(item.getQuantity() != null && item.getPrice() != null) {
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if(resultPrice < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+            }
+        }
 
         // 검증에 실패하면 다시 입력 폼으로
         if(bindingResult.hasErrors()) {
