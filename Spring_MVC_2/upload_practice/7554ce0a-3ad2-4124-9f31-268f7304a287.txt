@@ -1,0 +1,58 @@
+Ctrl + Alt + T : Surrount with  (try catch 등등 괄호 기능)
+
+Ctrl + Alt + V : 리팩토링 Extract
+
+Ctrl + Alt + Shift + T : 단축키 조회
+
+Ctrl + Alt + M : extract Method
+
+Shift + F10 : 이전 실행했던 조건 다시 실행
+
+Ctrl + F12 : 클래스 정보 (생성자, 메서드 등)
+
+Ctrl + D : 복사
+
+Ctrl + B : 코드 추적
+
+Alt + Insert : Constructor  (생성자)
+
+ctrl + e : 과거 히스토리 보기
+
+Alt + shift + 여러줄 클릭 : 여러줄 선택
+
+Ctrl + n :  검색
+
+Ctrl + Alt + N : 인라인
+
+Ctrl + Alt + B : go to implementation
+
+Alt + Insert : 자바 새로 만들기 
+
+F2 : 오류난 곳으로 커서 바로 이동
+
+Ctrl + space : 자동완성
+
+파일명 수정하고 Rename File으로 파일명 수정
+
+Ctrl + Alt + L : 코드 자동 정렬
+
+Ctrl + Tab : 화면 이동
+
+Ctrl + Alt + Shift + i : 검색  & 실행
+
+shift + F6 : 이름 변경
+
+ctrl + shift + r : 변수명 한번에 변경
+
+ctrl + shift + f : 프로젝트 내 단어 전체 검색
+
+ctrl + shift + t : create new test
+
+Shift + Ctrl + Alt + J : 같은 글자 한번에 선택
+
+shift + Enter : 창 2개 띄우기
+
+shift + shift : 검색
+
+ctrl + alt + shift + s : 프로젝트 세팅
+
