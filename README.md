@@ -1,7 +1,7 @@
 # Today I Learned / 오늘의 공부 기록
 
 ## Java
-
+[알고리즘-문제풀이]()
 
 
 ## Spring
@@ -13,6 +13,8 @@
 [Spring MVC2](https://github.com/MHLEE12/TIL_Spring/tree/master/Spring_MVC_2)
 
 [Spring Boot & JPA 활용1](https://github.com/MHLEE12/TIL_Spring/tree/master/Spring_JPA_prac1)
+
+[JPA-기본]()
 
 
 ## Linux
