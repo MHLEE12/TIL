@@ -22,13 +22,12 @@ public class Bag {
 		this.amount += amount;
 	}
 	
-//	public Bag(long amount) {
-//		
-//		this(null, amount);
-//	}
-//
-//	public Bag(Invitaion invitation, long amount) {
-//		this.invitation = invitaion;
-//		this.amount = amount;
-//	}
+	public Bag(long amount) {
+		this(null, amount);
+	}
+
+	public Bag(Invitation invitation, long amount) {
+		this.invitation = invitation;
+		this.amount = amount;
+	}
 }
