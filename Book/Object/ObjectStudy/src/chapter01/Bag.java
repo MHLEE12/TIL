@@ -6,15 +6,32 @@ public class Bag {
 	private Invitation invitation;
 	private Ticket ticket;
 	
-	public boolean hasInvitation() {
+	// 캡슐화하여 결합도를 낮추기 위한 메소드 추가
+	public Long hold(Ticket ticket) {
+		
+		if (hasInvitation()) {
+			setTicket(ticket);
+			return 0L;
+		} else {
+			setTicket(ticket);
+			minusAmount(ticket.getFee());
+			return ticket.getFee();
+		}
+		
+	}
+	
+	// 내부에서만 사용하니까 public > private 변경
+	private boolean hasInvitation() {
 		return invitation != null;
 	}
-
-	public void setTicket(Ticket ticket) {
+	
+	// 내부에서만 사용하니까 public > private 변경
+	private void setTicket(Ticket ticket) {
 		this.ticket = ticket;
 	}
 	
-	public void minusAmount(Long amount) {
+	// 내부에서만 사용하니까 public > private 변경
+	private void minusAmount(Long amount) {
 		this.amount -= amount;
 	}
 	
@@ -26,7 +43,7 @@ public class Bag {
 		this(null, amount);
 	}
 
-	public Bag(Invitation invitation, long amount) {
+	public Bag(Invitation invitation, Long amount) {
 		this.invitation = invitation;
 		this.amount = amount;
 	}
