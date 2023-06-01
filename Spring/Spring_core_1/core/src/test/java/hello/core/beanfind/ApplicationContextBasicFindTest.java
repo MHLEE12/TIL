@@ -33,11 +33,12 @@ class ApplicationContextBasicFindTest {
     void findBeanByType() {
         MemberService memberService = ac.getBean(MemberService.class);
 
+        // 같은 타입일 경우 여러개가 나올 수 있다.
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
-    @DisplayName("구체 타입입으로 조회")
+    @DisplayName("구체 타입으로 조회")
     void findBeanByName2() {
         // 구체적인 것으로 하는 것은 구현에 의존하는 것이므로 좋지 않다. 그러나 쓸때가 있기도 함...
 
