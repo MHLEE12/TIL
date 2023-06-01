@@ -30,8 +30,10 @@ public class TicketSeller {
 //			
 //		}
 
-		ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
+		// TicketOffice 클래스에 자율성을 주기위해 삭제한 코드
+//		ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
 		
+		ticketOffice.sellTicketTo(audience);
 	}
 
 }
