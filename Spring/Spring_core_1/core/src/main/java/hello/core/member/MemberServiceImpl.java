@@ -14,7 +14,7 @@ public class MemberServiceImpl implements MemberService {
 
     // 생성자를 통해서 객체가 들어가는 것 -> 생성자 주입
     // ComponentScan을 쓰면 Autowired도 쓰게 된다.
-    @Autowired // ac.getBean(MemberRepositoru.class)가 자동으로 들어간다.
+    @Autowired // ac.getBean(MemberRepository.class)가 자동으로 들어간다.
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
