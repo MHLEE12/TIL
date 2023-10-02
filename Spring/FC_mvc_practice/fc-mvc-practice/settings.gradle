@@ -1,2 +1,44 @@
 rootProject.name = 'fc-mvc-practice'
 
+def file(dir, name) {
+    return file("${dir.absolutePath}/${name}")
+}
+
+def GRADLE_TEXT = """
+
+dependencies {
+
+}
+"""
+
+["mvc", "board", "admin"].forEach(moduleName -> {
+    def moduleDir = file(rootDir, moduleName);
+    if(!moduleDir.exists()) {
+        moduleDir.mkdirs()
+    }
+
+    moduleDir.eachFile {subProjectDir ->
+        def buildFile = file(subProjectDir, 'build.gradle');
+        if(!buildFile.exists()) {
+            buildFile.text = GRADLE_TEXT
+        }
+
+        // 서브프로젝트로 등록
+        def projectName = ":${subProjectDir.name}"
+        include projectName
+        project(projectName).projectDir = subProjectDir
+
+        [
+                "src/main/java/com/${subProjectDir.name}",
+                "src/main/resources",
+                "src/test/java/com/${subProjectDir.name}",
+                "src/test/resources"
+        ].forEach(src -> {
+            def srcDir = file(subProjectDir, src);
+            if(!srcDir.exists()) {
+                srcDir.mkdirs();
+            }
+        })
+    }
+})
+
