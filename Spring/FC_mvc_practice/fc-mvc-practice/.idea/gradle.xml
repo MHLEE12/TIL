@@ -9,9 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/admin/admin-practice" />
-            <option value="$PROJECT_DIR$/board/board-practice" />
-            <option value="$PROJECT_DIR$/mvc/mvc-practice" />
+            <option value="$PROJECT_DIR$/admin/adminPractice" />
+            <option value="$PROJECT_DIR$/board/boardPractice" />
+            <option value="$PROJECT_DIR$/mvc/mvcPractice" />
           </set>
         </option>
       </GradleProjectSettings>
