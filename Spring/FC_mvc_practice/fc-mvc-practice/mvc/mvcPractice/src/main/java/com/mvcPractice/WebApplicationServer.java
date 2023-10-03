@@ -1,7 +1,26 @@
 package com.mvcPractice;
 
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.startup.Tomcat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+
 public class WebApplicationServer {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+    private static final Logger log = LoggerFactory.getLogger(WebApplicationServer.class);
+
+    public static void main(String[] args) throws Exception {
+        String webappDirLocation = "mvc/mvcPractice/webapps/";
+        Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8095);
+
+        tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
+        log.info("configuring app with basedir: {}", new File("./" + webappDirLocation).getAbsolutePath());
+
+        tomcat.start();
+        tomcat.getServer().await();
     }
+
 }
