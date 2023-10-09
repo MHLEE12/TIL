@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.mvcPractice'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 임베디드 톰캣 이용
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:8.5.42'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.42'
+
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'javax.servlet:jstl:1.2'
+
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// 멀티모듈 적용하면서 추가한 것
+// 어떤 프로젝트인지 콘솔에 찍히게 하는 것
+println project.name
+

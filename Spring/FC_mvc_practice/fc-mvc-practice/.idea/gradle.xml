@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/admin/adminPractice" />
             <option value="$PROJECT_DIR$/board/boardPractice" />
             <option value="$PROJECT_DIR$/mvc/mvcPractice" />
+            <option value="$PROJECT_DIR$/oop/oopPractice" />
           </set>
         </option>
       </GradleProjectSettings>
