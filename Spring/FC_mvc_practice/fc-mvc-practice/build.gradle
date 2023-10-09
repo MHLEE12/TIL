@@ -18,5 +18,7 @@ test {
     useJUnitPlatform()
 }
 
+// 멀티모듈 적용하면서 추가한 것
 // 어떤 프로젝트인지 콘솔에 찍히게 하는 것
 println project.name
+
