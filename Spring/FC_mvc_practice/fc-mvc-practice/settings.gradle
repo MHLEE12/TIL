@@ -11,7 +11,7 @@ dependencies {
 }
 """
 
-["mvc", "oop", "was"].forEach(moduleName -> {
+["mvc", "oop", "was", "servlet"].forEach(moduleName -> {
     def moduleDir = file(rootDir, moduleName);
     if(!moduleDir.exists()) {
         moduleDir.mkdirs()
@@ -20,7 +20,7 @@ dependencies {
     moduleDir.eachFile {subProjectDir ->
         def buildFile = file(subProjectDir, 'build.gradle');
         if(!buildFile.exists()) {
-            buildFile.text = GRADLE_TEXT
+            buildFile.text = GRADLE_TEXT;
         }
 
         // 서브프로젝트로 등록

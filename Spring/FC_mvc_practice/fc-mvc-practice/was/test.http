@@ -1,2 +1,0 @@
-// GET /calculate?operand1=10&operator=*&operand2=33
-GET http://localhost:8091/calculate?operand1=10&operator=-&operand2=3
