@@ -1,15 +1,15 @@
 package org.sample.mvc.controller;
 
-import org.sample.mvc.annotation.RequestMapping;
+import org.sample.mvc.repository.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
-@org.sample.mvc.annotation.Controller
-public class HomeController implements Controller {
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+public class UserListController implements Controller {
+    @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return "home";
+        request.setAttribute("users", UserRepository.findAll());
+        return "/user/list";
     }
 }
