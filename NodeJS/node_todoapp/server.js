@@ -6,3 +6,15 @@ const app = express(); // 첨부된 것으로 새로운 객체 생성
 app.listen(8081, function() {
     console.log('listening on 8081');
 });
+
+app.get('/test', function(req, resp) { // function(요청, 응답)
+    resp.send('응답하는 페이지 입니다.');
+});
+
+app.get('/', function(req, resp) { // function(요청, 응답)
+    resp.sendFile(__dirname + '/index.html');
+});
+
+app.get('/write', function(req, resp) { // function(요청, 응답)
+    resp.sendFile(__dirname + '/write.html');
+});
