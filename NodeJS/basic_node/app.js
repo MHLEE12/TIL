@@ -17,6 +17,8 @@ const http = require('http');
 // 서버 여는 방법 3. createServer 콜백 함수 사용
 const server = http.createServer((req, res) => {
     console.log(req);
+
+    // process.exit(); // 이벤트 루프를 잘라서 프로그램을 종료 시킴
 });
 
 server.listen(8081);
