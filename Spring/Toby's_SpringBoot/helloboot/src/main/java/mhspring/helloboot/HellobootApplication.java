@@ -20,22 +20,23 @@ public class HellobootApplication {
     public static void main(String[] args) {
 
 //        TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-        ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory(9000);
+        ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory(8081);
         // 톰캣 말고 다른 것을 사용한다면 ServletWebServerFactory를 사용
 
         // 서블릿 컨테이너를 생성하는 함수
         WebServer webServer = serverFactory.getWebServer(servletContext -> {
+            // 서블릿 컨테이너에 서블릿 추가
             // ServletContextInitializer 익명클래스를 람다식으로 바꿨음
             servletContext.addServlet("hello", new HttpServlet() {
                 @Override
                 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
                     String name = req.getParameter("name");
 
-                    resp.setStatus(HttpStatus.OK.value());
-                    resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
-                    resp.getWriter().println("Hello " + name);
+                    resp.setStatus(HttpStatus.OK.value()); // 상태 코드 '200'
+                    resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE); // 헤더 설정
+                    resp.getWriter().println("Hello " + name); // 바디 작성
                 }
-            }).addMapping("/hello");
+            }).addMapping("/hello"); // 서블릿 컨테이너가 요청이 들어왔을때 어떤 서블릿과 연결할지 설정함(매핑)
         });
         webServer.start(); // 톰캣 서블릿 컨테이너 실행
     }
