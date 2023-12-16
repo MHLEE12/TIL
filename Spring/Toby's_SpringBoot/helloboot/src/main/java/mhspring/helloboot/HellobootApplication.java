@@ -28,6 +28,8 @@ public class HellobootApplication {
         WebServer webServer = serverFactory.getWebServer(servletContext -> {
             // 서블릿 컨테이너에 서블릿 추가
             // ServletContextInitializer 익명클래스를 람다식으로 바꿨음
+
+            HelloController helloController = new HelloController();
             servletContext.addServlet("frontController", new HttpServlet() {
                 @Override
                 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,9 +37,11 @@ public class HellobootApplication {
                     if(req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
                         String name = req.getParameter("name");
 
+                        String ret = helloController.hello(name);
+
                         resp.setStatus(HttpStatus.OK.value()); // 상태 코드 '200'
                         resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE); // 헤더 설정
-                        resp.getWriter().println("Hello " + name); // 바디 작성
+                        resp.getWriter().println(ret); // 바디 작성
                     } else if(req.getRequestURI().equals("/user")) {
                         //
                     } else {
