@@ -4,6 +4,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,10 @@ import java.io.IOException;
 public class HellobootApplication {
 
     public static void main(String[] args) {
+        // Spring Container
+        GenericApplicationContext applicationContext = new GenericApplicationContext();
+        applicationContext.registerBean(HelloController.class); // bean 등록
+        applicationContext.refresh(); // 컨테이너를 초기화하여 가지고 있는 bean object 생성
 
 //        TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
         ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory(8081);
@@ -29,7 +34,6 @@ public class HellobootApplication {
             // 서블릿 컨테이너에 서블릿 추가
             // ServletContextInitializer 익명클래스를 람다식으로 바꿨음
 
-            HelloController helloController = new HelloController();
             servletContext.addServlet("frontController", new HttpServlet() {
                 @Override
                 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,13 +41,11 @@ public class HellobootApplication {
                     if(req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
                         String name = req.getParameter("name");
 
+                        HelloController helloController = applicationContext.getBean(HelloController.class);
                         String ret = helloController.hello(name);
 
-                        resp.setStatus(HttpStatus.OK.value()); // 상태 코드 '200'
-                        resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE); // 헤더 설정
+                        resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
                         resp.getWriter().println(ret); // 바디 작성
-                    } else if(req.getRequestURI().equals("/user")) {
-                        //
                     } else {
                         resp.setStatus(HttpStatus.NOT_FOUND.value()); // 상태 코드 '404'
                     }
