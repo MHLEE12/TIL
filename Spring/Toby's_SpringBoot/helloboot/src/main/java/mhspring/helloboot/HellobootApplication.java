@@ -34,8 +34,6 @@ public class HellobootApplication {
 
         // 서블릿 컨테이너를 생성하는 함수
         WebServer webServer = serverFactory.getWebServer(servletContext -> {
-            // 서블릿 컨테이너에 서블릿 추가
-            // ServletContextInitializer 익명클래스를 람다식으로 바꿨음
 
             servletContext.addServlet("dispatcherServlet",
                     // DispatcherServlet은 GenericWebApplicationContext타입의 컨테이너를 넘겨줘야함 사용해야함
