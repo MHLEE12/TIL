@@ -9,6 +9,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.context.support.GenericWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,7 +23,7 @@ public class HellobootApplication {
 
     public static void main(String[] args) {
         // Spring Container
-        GenericApplicationContext applicationContext = new GenericApplicationContext();
+        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext();
         applicationContext.registerBean(HelloController.class); // bean 등록
         applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.refresh(); // 컨테이너를 초기화하여 가지고 있는 bean object 생성
@@ -35,23 +37,10 @@ public class HellobootApplication {
             // 서블릿 컨테이너에 서블릿 추가
             // ServletContextInitializer 익명클래스를 람다식으로 바꿨음
 
-            servletContext.addServlet("frontController", new HttpServlet() {
-                @Override
-                protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                    // 인증, 보안, 다국어, 공통 기능
-                    if(req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
-                        String name = req.getParameter("name");
-
-                        HelloController helloController = applicationContext.getBean(HelloController.class);
-                        String ret = helloController.hello(name);
-
-                        resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
-                        resp.getWriter().println(ret); // 바디 작성
-                    } else {
-                        resp.setStatus(HttpStatus.NOT_FOUND.value()); // 상태 코드 '404'
-                    }
-                }
-            }).addMapping("/*"); // 서블릿 컨테이너가 요청이 들어왔을때 어떤 서블릿과 연결할지 설정함(매핑)
+            servletContext.addServlet("dispatcherServlet",
+                    // DispatcherServlet은 GenericWebApplicationContext타입의 컨테이너를 넘겨줘야함 사용해야함
+                    new DispatcherServlet(applicationContext)
+            ).addMapping("/*"); // 서블릿 컨테이너가 요청이 들어왔을때 어떤 서블릿과 연결할지 설정함(매핑)
         });
         webServer.start(); // 톰캣 서블릿 컨테이너 실행
     }
