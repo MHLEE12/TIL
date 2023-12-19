@@ -23,23 +23,25 @@ public class HellobootApplication {
 
     public static void main(String[] args) {
         // Spring Container
-        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext();
+        GenericWebApplicationContext applicationContext = new GenericWebApplicationContext() {
+            // 익명클래스 사용
+            @Override
+            protected void onRefresh() {
+                super.onRefresh();
+
+                ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory(8081);
+                WebServer webServer = serverFactory.getWebServer(servletContext -> {
+                    servletContext.addServlet("dispatcherServlet",
+                            // DispatcherServlet은 GenericWebApplicationContext타입의 컨테이너를 넘겨줘야함 사용해야함
+                            new DispatcherServlet(this)
+                    ).addMapping("/*"); // 서블릿 컨테이너가 요청이 들어왔을때 어떤 서블릿과 연결할지 설정함(매핑)
+                });
+                webServer.start(); // 톰캣 서블릿 컨테이너 실행
+            }
+        };
         applicationContext.registerBean(HelloController.class); // bean 등록
         applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.refresh(); // 컨테이너를 초기화하여 가지고 있는 bean object 생성
 
-//        TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-        ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory(8081);
-        // 톰캣 말고 다른 것을 사용한다면 ServletWebServerFactory를 사용
-
-        // 서블릿 컨테이너를 생성하는 함수
-        WebServer webServer = serverFactory.getWebServer(servletContext -> {
-
-            servletContext.addServlet("dispatcherServlet",
-                    // DispatcherServlet은 GenericWebApplicationContext타입의 컨테이너를 넘겨줘야함 사용해야함
-                    new DispatcherServlet(applicationContext)
-            ).addMapping("/*"); // 서블릿 컨테이너가 요청이 들어왔을때 어떤 서블릿과 연결할지 설정함(매핑)
-        });
-        webServer.start(); // 톰캣 서블릿 컨테이너 실행
     }
 }
