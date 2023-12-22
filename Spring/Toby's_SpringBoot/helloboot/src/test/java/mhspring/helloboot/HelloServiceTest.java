@@ -11,21 +11,9 @@ import java.lang.annotation.Target;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-@UnitTest
-@interface FastUnitTest {
-}
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD}) // ElementType.ANNOTATION_TYPE 다른 어노테이션의 메타에노테이션으로도 사용 가능함
-@Test
-@interface UnitTest {
-}
-
 class HelloServiceTest {
 
-    @FastUnitTest
+    @Test
     void simpleHelloService() {
         SimpleHelloService helloService = new SimpleHelloService();
         String ret = helloService.sayHello("Test");
