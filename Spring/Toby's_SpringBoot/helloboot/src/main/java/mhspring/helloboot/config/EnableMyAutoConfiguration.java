@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import({DispatcherServletConfig.class, TomcatWebServerConfig.class}) // 어노테이션의 메타 어노테이션으로 사용 가능
+@Import(MyAutoConfigImportSelector.class) // 어노테이션의 메타 어노테이션으로 사용 가능
 public @interface EnableMyAutoConfiguration {
 }
