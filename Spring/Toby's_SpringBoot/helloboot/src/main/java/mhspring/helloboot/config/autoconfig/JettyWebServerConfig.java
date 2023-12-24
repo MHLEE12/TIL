@@ -1,16 +1,16 @@
 package mhspring.helloboot.config.autoconfig;
 
 import mhspring.helloboot.config.MyAutoConfiguration;
+import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 @MyAutoConfiguration
-public class TomcatWebServerConfig {
+public class JettyWebServerConfig {
 
-    @Bean("tomcatWebServerFactory")
+    @Bean("jettyWebServerFactory")
     public ServletWebServerFactory servletWebServerFactory() {
-        return new TomcatServletWebServerFactory(8081);
+        return new JettyServletWebServerFactory(8081);
     }
 }
