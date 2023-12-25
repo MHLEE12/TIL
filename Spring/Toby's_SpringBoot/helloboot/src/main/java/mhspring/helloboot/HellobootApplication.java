@@ -1,7 +1,7 @@
 package mhspring.helloboot;
 
-import mhspring.helloboot.config.EnableMyAutoConfiguration;
-import mhspring.helloboot.config.MySpringBootApplication;
+import mhspring.config.EnableMyAutoConfiguration;
+import mhspring.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
 @MySpringBootApplication
