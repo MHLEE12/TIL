@@ -1,4 +1,4 @@
-package mhspring.helloboot.config;
+package mhspring.config;
 
 import org.springframework.context.annotation.Configuration;
 

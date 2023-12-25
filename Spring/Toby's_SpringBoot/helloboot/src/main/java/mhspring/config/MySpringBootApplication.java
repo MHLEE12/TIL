@@ -1,10 +1,7 @@
-package mhspring.helloboot.config;
+package mhspring.config;
 
-import mhspring.helloboot.config.autoconfig.DispatcherServletConfig;
-import mhspring.helloboot.config.autoconfig.TomcatWebServerConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,0 +1,3 @@
+mhspring.config.autoconfig.TomcatWebServerConfig
+mhspring.config.autoconfig.JettyWebServerConfig
+mhspring.config.autoconfig.DispatcherServletConfig
