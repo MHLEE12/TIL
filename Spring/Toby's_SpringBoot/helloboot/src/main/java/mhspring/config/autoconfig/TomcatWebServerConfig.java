@@ -1,6 +1,7 @@
 package mhspring.config.autoconfig;
 
 import mhspring.config.ConditionalMyOnClass;
+import mhspring.config.EnableMyConfigurationProperties;
 import mhspring.config.MyAutoConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -13,7 +14,7 @@ import static java.lang.Integer.parseInt;
 
 @MyAutoConfiguration
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
-@Import(ServerProperties.class)
+@EnableMyConfigurationProperties(ServerProperties.class)
 public class TomcatWebServerConfig {
 
     @Bean("tomcatWebServerFactory")
