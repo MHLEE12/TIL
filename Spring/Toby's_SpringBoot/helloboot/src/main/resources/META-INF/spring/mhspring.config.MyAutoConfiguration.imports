@@ -1,4 +1,5 @@
-mhspring.config.autoconfig.ServerPropertiesConfig
+mhspring.config.autoconfig.PropertyPostProcessorConfig
+mhspring.config.autoconfig.PropertyPlaceholderConfig
 mhspring.config.autoconfig.TomcatWebServerConfig
 mhspring.config.autoconfig.JettyWebServerConfig
 mhspring.config.autoconfig.DispatcherServletConfig
