@@ -1,3 +1,4 @@
+mhspring.config.autoconfig.DataSourceConfig
 mhspring.config.autoconfig.PropertyPostProcessorConfig
 mhspring.config.autoconfig.PropertyPlaceholderConfig
 mhspring.config.autoconfig.TomcatWebServerConfig
