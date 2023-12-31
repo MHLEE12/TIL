@@ -1,17 +1,14 @@
 package mhspring.helloboot;
 
-import mhspring.helloboot.HelloRepository;
-import mhspring.helloboot.HelloService;
-import mhspring.helloboot.HellobootTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 
-@HellobootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class HelloServiceCountTest {
 
     @Autowired
