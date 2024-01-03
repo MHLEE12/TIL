@@ -1,20 +1,32 @@
 public class GList<T> {
 
-    private Object[] nums;
+    private Object[] data;
     private int current;
+    private int capacity; // 용량
+    private int amount; // 추가 증가량
 
     public GList() {
-        nums = new Object[3];
+        data = new Object[3];
+        capacity = 3;
+        amount = 5;
         current = 0;
     }
 
     public void add(T num) {
-        nums[current] = num;
+        if(capacity <= current) {
+            Object[] temp = new Object[capacity + amount];
+            for(int i = 0; i < data.length; i++) {
+                temp[i] = data[i];
+            }
+            data = temp;
+            capacity += amount;
+        }
+
+        data[current] = num;
         current++;
     }
 
     public void clear() {
-//        nums = new int[3];
         current = 0;
     }
 
@@ -26,6 +38,6 @@ public class GList<T> {
         if(current <= index) {
             throw new IndexOutOfBoundsException();
         }
-        return (T) nums[index];
+        return (T) data[index];
     }
 }
